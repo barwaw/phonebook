@@ -1,9 +1,9 @@
 const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
+// const morgan = require('morgan')
+// const cors = require('cors')
 
 
-morgan.token('body', (req, res) => JSON.stringify(req.body))
+// morgan.token('body', (req, res) => JSON.stringify(req.body))
 
 let persons = [
   { 
@@ -30,8 +30,12 @@ let persons = [
 
 const app = express()
 app.use(express.json())
-app.use(morgan(':method :url :status :response-time :body'))
-app.use(cors)
+// app.use(morgan(':method :url :status :response-time :body'))
+// app.use(cors)
+
+app.get('/', (request, response) => {
+  response.send('<h1>Hello World!</h1>')
+})
 
 app.get('/api/persons', (request, response) => {
   response.json(persons)
